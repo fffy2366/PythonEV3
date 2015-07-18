@@ -1,5 +1,8 @@
 #from pylib import ports_to_int
 #ports_to_int('abcd')
+#========================================
+# WORK IN PROGRESS, UPDATING FOR READIBILITY SOON
+#========================================
 import struct
 import time
 def ports_to_int(ports):
