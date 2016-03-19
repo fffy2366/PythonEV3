@@ -11,7 +11,7 @@ import sys
 import binascii
 import logging
 
-reload(sys) 
+#reload(sys) 
 #sys.setdefaultencoding('utf-8')
 #
 # 创建一个logger 
@@ -39,32 +39,33 @@ logger.addHandler(fh)
 logger.info('foorbar') 
 #该代码片段来自于: http://www.sharejs.com/codes/python/6248
 
-EV3 = serial.Serial('/dev/tty.EV3-SerialPort')
-print "Listening for EV3 Bluetooth messages, press CTRL C to quit."
+#EV3 = serial.Serial('/dev/tty.EV3-SerialPort')
+EV3 = serial.Serial('COM1')
+print("Listening for EV3 Bluetooth messages, press CTRL C to quit.")
 try:
    while 1:
       n = EV3.inWaiting()
-      if n <> 0:
+      if(n != 0):
          s = EV3.read(n)
          str = ""
          for n in s:
-            #print "%02X" % ord(n),
+            #print("%02X" % ord(n)),
             #logger.info(n),
             #print n,
             #ord("a")->97
-            #print ord(n),
-            #print "-------"
+            #print(ord(n)),
+            #print("-------")
             str = str +" "+"%02X" % ord(n)
          if "00 04 00 00 00 80 3F" in str:
-            print "a"
+            print("a")
          elif "00 04 00 00 00 00 40" in str:
-            print "b"
+            print("b")
          elif "00 04 00 00 00 40 40" in str:
-            print "c"
+            print("c")
          elif "00 04 00 00 00 80 40" in str:
-            print "d"
-         print str
-         print 
+            print("d")
+         print(str)
+         print()
       else:
          # No data is ready to be processed
          time.sleep(0.5)
