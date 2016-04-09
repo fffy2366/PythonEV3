@@ -1,9 +1,9 @@
 #-*-coding:utf-8-*-
 '''
 while True:
-	with open('/dev/tty.EV3-SerialPort', 'w+', 0) as bt:
-		incoming = bt.read()
-		print incoming
+   with open('/dev/tty.EV3-SerialPort', 'w+', 0) as bt:
+      incoming = bt.read()
+      print incoming
 '''
 import serial
 import time
@@ -40,7 +40,7 @@ logger.info('foorbar')
 #该代码片段来自于: http://www.sharejs.com/codes/python/6248
 
 #EV3 = serial.Serial('/dev/tty.EV3-SerialPort')
-EV3 = serial.Serial('COM1')
+EV3 = serial.Serial('COM3')
 print("Listening for EV3 Bluetooth messages, press CTRL C to quit.")
 try:
    while 1:
@@ -51,11 +51,14 @@ try:
          for n in s:
             #print("%02X" % ord(n)),
             #logger.info(n),
-            #print n,
+            #print(n)
             #ord("a")->97
             #print(ord(n)),
             #print("-------")
-            str = str +" "+"%02X" % ord(n)
+         
+            #str = str +" "+"%02X" % ord(n)
+            str = str +" "+"%02X" % n
+         #str = n
          if "00 04 00 00 00 80 3F" in str:
             print("a")
          elif "00 04 00 00 00 00 40" in str:
